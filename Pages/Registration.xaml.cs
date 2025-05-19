@@ -93,7 +93,7 @@ namespace library.Pages
                 };
                 AppConnect.model01.Authors.Add(userObj);
                 AppConnect.model01.SaveChanges();
-                MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);  
                 TBName.Clear();
                 TBLogin.Clear();
                 TBPassword.Clear();
