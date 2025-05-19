@@ -24,12 +24,6 @@ namespace library.Pages
         public Registration()
         {
             InitializeComponent();
-        }
-
-
-        public Registration()
-        {
-            InitializeComponent();
             ButtonRegist.IsEnabled = false;
         }
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
