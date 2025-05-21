@@ -1,0 +1,60 @@
+﻿<Page x:Class="library.Pages.EditBook"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:library.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditBook">
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid Margin="0,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock TextWrapping="Wrap" Text="Название:" FontWeight="Bold" FontSize="16" Foreground="#FF0027FF" Grid.Row="0" HorizontalAlignment="Left"/>
+            <TextBox x:Name="EditRecipeName" Width="300" Margin="0,5" ToolTip="Введите название рецепта" Grid.Row="1" HorizontalAlignment="Center" FontSize="14"/>
+        </Grid>
+
+        <Grid Margin="0,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock TextWrapping="Wrap" Text="Описание:" FontWeight="Bold" FontSize="16" Foreground="#FF0027FF" Grid.Row="0" HorizontalAlignment="Left"/>
+            <TextBox x:Name="EditDescription" Width="300" Margin="0,5" ToolTip="Введите описание рецепта" Grid.Row="1" HorizontalAlignment="Center" FontSize="14"/>
+        </Grid>
+
+        <Grid Margin="0,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock TextWrapping="Wrap" Text="Автор:" FontWeight="Bold" FontSize="16" Foreground="#FF0027FF" Grid.Row="0" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="EditAuthor" Width="300" Margin="0,5" ToolTip="Выберите автора" Grid.Row="1" HorizontalAlignment="Center" FontSize="14"/>
+        </Grid>
+
+        <Grid Margin="0,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock TextWrapping="Wrap" Text="Категория:" FontWeight="Bold" FontSize="16" Foreground="#FF0027FF" Grid.Row="0" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="EditCategory" Width="300" Margin="0,5" ToolTip="Выберите категорию" Grid.Row="1" HorizontalAlignment="Center" FontSize="14"/>
+        </Grid>
+
+        <Grid Margin="0,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock TextWrapping="Wrap" Text="Время приготовления:" FontWeight="Bold" FontSize="16" Foreground="#FF0027FF" Grid.Row="0" HorizontalAlignment="Left"/>
+            <TextBox x:Name="EditCookingTime" Width="300" Margin="0,5" ToolTip="Введите время приготовления" Grid.Row="1" HorizontalAlignment="Center" FontSize="14"/>
+        </Grid>
+        <Button Content="Картинка" Width="300" Margin="0,5" Click="LoadImageButton" HorizontalAlignment="Center" FontSize="16" Foreground="#FF0027FF" FontWeight="Bold"/>
+        <Button Content="Сохранить" Width="150" Height="30" Margin="0,5" Click="SaveChanges_Click" HorizontalAlignment="Center" FontSize="14"/>
+        <Button Content="Выход" Width="150" Height="30" Click="Exit_Click" FontSize="14"/>
+    </StackPanel>
+</Page>
