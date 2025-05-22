@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DataOutput">
 
-    <Grid>
+    <Grid Background="#FF66021F">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -19,27 +19,27 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Поиск" FontSize="14"/>
-                <TextBox x:Name="TextSearch" TextWrapping="Wrap" Width="200" Height="20" ToolTip="Введите текст для поиска рецептов" TextChanged="TextSearch_TextChanged" Margin="147,0,0,0"/>
+                <TextBlock Text="Поиск" FontSize="14" Foreground="#FFFFE9EC" FontWeight="Bold"/>
+                <TextBox x:Name="TextSearch" TextWrapping="Wrap" Width="200" Height="20" ToolTip="Введите название для поиска книги" TextChanged="TextSearch_TextChanged" Margin="147,0,0,0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                <TextBlock Text="Сортировка" FontSize="14"/>
+                <TextBlock Text="Сортировка" FontSize="14" Foreground="#FFFFE9EC" FontWeight="Bold"/>
                 <ComboBox x:Name="ComboSort" Height="20" Width="200" SelectionChanged="ComboSort_SelectionChanged" Margin="110,0,0,0">
                     <ComboBoxItem Content="Не сортировать"/>
-                    <ComboBoxItem Content="Сортировать по имени"/>
-                    <ComboBoxItem Content="Сортировать по времени приготовления"/>
+                    <ComboBoxItem Content="Сортировать от А до Я"/>
+                    <ComboBoxItem Content="Сортировать от Я до А"/>
                 </ComboBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                <TextBlock Text="Фильтрация по категории" FontSize="14"/>
+                <TextBlock Text="Фильтрация по категории" FontSize="14" Foreground="#FFFFE9EC" FontWeight="Bold"/>
                 <ComboBox x:Name="ComboFilter" Height="20" Width="200" SelectionChanged="ComboFilter_SelectionChanged" Margin="20,0,0,0">
-                    <ComboBoxItem Content="Все категории"/>
+                    <ComboBoxItem Content="Жанр"/>
                 </ComboBox>
             </StackPanel>
         </StackPanel>
-        <ListView x:Name="listProducts" Grid.Row="1" ToolTip="Список доступных рецептов">
+        <ListView x:Name="listBooks" Grid.Row="1" ToolTip="Список доступных книг">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -51,26 +51,38 @@
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Source="{Binding CurrentPhoto}"></Image>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="5" Grid.Column="1">
-                                <TextBlock Width="auto" TextWrapping="Wrap" Height="auto" Text="{Binding RecipeName}" FontWeight="Bold" FontSize="16" Foreground="#FF0027FF"/>
-                                <TextBlock Width="auto" TextWrapping="Wrap" Height="auto">
-                            <Run Text="Описание: "/>
-                            <Run Text="{Binding DescriptionN}"/>
-                                </TextBlock>
+                                <TextBlock Width="auto" TextWrapping="Wrap" Height="auto" Text="{Binding books.name}" FontWeight="Bold" FontSize="16" Foreground="#FF0027FF"/>
                                 <TextBlock Width="auto" TextWrapping="Wrap" Height="auto">
                             <Run Text="Автор: "/>
-                            <Run Text="{Binding Authors.AuthorName}"/>
+                            <Run Text="{Binding Authors.surname}"/>
                                 </TextBlock>
                                 <TextBlock Width="auto" TextWrapping="Wrap" Height="auto">
-                            <Run Text="Категория: "/>
-                            <Run Text="{Binding Categories.CategoryName}"/>
+                            <Run Text="Тип литературы: "/>
+                            <Run Text="{Binding t_of_literature.name}"/>
+                                </TextBlock>
+                                <TextBlock Width="auto" TextWrapping="Wrap" Height="auto">
+                            <Run Text="Жанр: "/>
+                            <Run Text="{Binding genres.name}"/>
+                                </TextBlock>
+                                <TextBlock Width="auto" TextWrapping="Wrap" Height="auto">
+                            <Run Text="Издательство: "/>
+                            <Run Text="{Binding publishing.name}"/>
+                                </TextBlock>
+                                <TextBlock Width="auto" TextWrapping="Wrap" Height="auto">
+                            <Run Text="Год издания: "/>
+                            <Run Text="{Binding year_of_public}"/>
+                                </TextBlock>
+                                <TextBlock Width="auto" TextWrapping="Wrap" Height="auto">
+                            <Run Text="Переплет: "/>
+                            <Run Text="{Binding Binding.name}"/>
                                 </TextBlock>
                             </StackPanel>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Grid.Column="2" Margin="5">
                                 <TextBlock Width="auto" TextWrapping="Wrap" Height="auto">
-                        <Run Text="Время приготовления: "/>
-                        <Run Text="{Binding CookingTime}"/>
+                        <Run Text="Количество: "/>
+                        <Run Text="{Binding quantity}"/>
                                 </TextBlock>
-                                <Button Content="Редактировать" Width="120" Height="20" Click="EditButton_Click" ToolTip="Редактировать рецепт" HorizontalAlignment="Left"/>
+                                <Button Content="Редактировать" Width="120" Height="20" Click="EditButton_Click" ToolTip="Редактировать книгу" HorizontalAlignment="Left"/>
                                 <Button Content="В избранное" Width="120" Height="20" Click="AddToFavoritesButton_Click" ToolTip="Добавить в избранное" HorizontalAlignment="Left"/>
                             </StackPanel>
                         </Grid>
@@ -84,9 +96,9 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Добавить рецепт" Width="120" Height="20" Click="AddButton_Click" ToolTip="Добавить рецепт" Grid.Column="0" HorizontalAlignment="Left"/>
-            <Button Content="Просмотр избранного" Width="150" Height="20" Click="ViewFavoritesButton_Click" ToolTip="Перейти к избранным рецептам" Grid.Column="1" HorizontalAlignment="Left" Margin="18,0,0,0"/>
-            <TextBlock x:Name="TextFoundCount" Text="Найдено: 0" Margin="10,0,0,0" VerticalAlignment="Center" Grid.Column="2"/>
+            <Button Content="Добавить книгу" Width="120" Height="20" Click="AddButton_Click" ToolTip="Добавить книгу" Grid.Column="0" HorizontalAlignment="Left" Background="#FFFFE9EC" Foreground="#FF66021F" FontWeight="Bold"/>
+            <Button Content="Просмотр избранного" Width="150" Height="20" Click="ViewFavoritesButton_Click" ToolTip="Перейти к избранным книгам" Grid.Column="1" HorizontalAlignment="Left" Margin="18,0,0,0" Background="#FFFFE9EC" Foreground="#FF66021F" FontWeight="Bold"/>
+            <TextBlock x:Name="TextFoundCount" Text="Найдено: 0" Margin="10,0,0,0" VerticalAlignment="Center" Grid.Column="2" Foreground="#FFFFE9EC"/>
         </Grid>
     </Grid>
 </Page>

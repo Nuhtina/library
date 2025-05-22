@@ -28,7 +28,7 @@ namespace library.Pages
         }
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (PBpassword.Password != TBPassword.Text)
+            if (PBpassword.Password != TBpass.Text)
             {
                 ButtonRegist.IsEnabled = false;
                 PBpassword.Background = Brushes.LightCoral;
@@ -44,29 +44,25 @@ namespace library.Pages
 
         private void ButtonRegist_Click(object sender, RoutedEventArgs e)
         {
-            string authorName = TBName.Text;
-            string login = TBLogin.Text;
-            string password = TBPassword.Text;
+            string surname = TBsurname.Text;
+            string name = TBname.Text;
+            string patronymic = TBpatronymic.Text;
+            string email = TBemail.Text;
+            string password = TBpass.Text;
             string passwordRepeat = PBpassword.Password;
-            DateTime? dateOfBirth = DPDateOfBirth.SelectedDate;
-            string experience = TBExperience.Text;
-            string email = TBEmail.Text;
-            string telephone = TBTelephone.Text;
 
-            if (string.IsNullOrWhiteSpace(authorName) ||
-                string.IsNullOrWhiteSpace(login) ||
-                string.IsNullOrWhiteSpace(password) ||
-                string.IsNullOrWhiteSpace(passwordRepeat) ||
-                !dateOfBirth.HasValue ||
-                string.IsNullOrWhiteSpace(experience) ||
+            if (string.IsNullOrWhiteSpace(surname) ||
+                string.IsNullOrWhiteSpace(name) ||
+                string.IsNullOrWhiteSpace(patronymic) ||
                 string.IsNullOrWhiteSpace(email) ||
-                string.IsNullOrWhiteSpace(telephone))
+                string.IsNullOrWhiteSpace(password) ||
+                string.IsNullOrWhiteSpace(passwordRepeat))
             {
                 MessageBox.Show("Пожалуйста, заполните все поля.", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            if (ApplicationData.AppConnect.model01.Authors.Count(x => x.Login == TBLogin.Text) > 0)
+            if (ApplicationData.AppConnect.model01.user.Count(x => x.email == TBemail.Text) > 0)
             {
                 MessageBox.Show("Пользователь с таким логином уже существует!", "Уведомление",
                                 MessageBoxButton.OK, MessageBoxImage.Information);
@@ -75,27 +71,23 @@ namespace library.Pages
 
             try
             {
-                Authors userObj = new Authors
+                user userObj = new user
                 {
-                    AuthorName = authorName,
-                    Login = login,
-                    Password = password,
-                    DateOfBirth = dateOfBirth.Value,
-                    Experience = experience,
-                    Email = email,
-                    Telephone = telephone
+                    surname = surname,
+                    name = name,
+                    patronymic = patronymic,
+                    email = email,
+                    password = password
                 };
-                AppConnect.model01.Authors.Add(userObj);
+                AppConnect.model01.user.Add(userObj);
                 AppConnect.model01.SaveChanges();
                 MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);  
-                TBName.Clear();
-                TBLogin.Clear();
-                TBPassword.Clear();
+                TBsurname.Clear();
+                TBname.Clear();
+                TBpatronymic.Clear();
+                TBemail.Clear();
+                TBpass.Clear();
                 PBpassword.Clear();
-                DPDateOfBirth.SelectedDate = null;
-                TBExperience.Clear();
-                TBEmail.Clear();
-                TBTelephone.Clear();
             }
             catch (Exception ex)
             {

@@ -6,27 +6,23 @@
       xmlns:local="clr-namespace:library.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450"
-      Title="Registration" Width="228">
+      Title="Registration" Width="800">
 
-    <Grid Tag="">
-        <TextBlock HorizontalAlignment="Left" Margin="10,60,0,0" TextWrapping="Wrap" Text="Введите имя автора:" VerticalAlignment="Top" Foreground="#FF2CAB00" FontWeight="Bold"/>
-        <TextBox x:Name="TBName" HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,104,0,0" TextWrapping="Wrap" Text="Введите логин:" VerticalAlignment="Top" Foreground="#FF2CAB00" FontWeight="Bold"/>
-        <TextBox x:Name="TBLogin" HorizontalAlignment="Left" Margin="10,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,284,0,0" TextWrapping="Wrap" Text="Введите почту:" VerticalAlignment="Top" Foreground="#FF2CAB00" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,238,0,0" TextWrapping="Wrap" Text="Дата Рождения:" VerticalAlignment="Top" Foreground="#FF2CAB00" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="126,238,0,0" TextWrapping="Wrap" Text="Стаж:" VerticalAlignment="Top" Foreground="#FF2CAB00" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,328,0,0" TextWrapping="Wrap" Text="Введите телефон:" VerticalAlignment="Top" Foreground="#FF2CAB00" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,148,0,0" TextWrapping="Wrap" Text="Введите пароль:" VerticalAlignment="Top" Foreground="#FF2CAB00" FontWeight="Bold"/>
-        <PasswordBox x:Name="PBpassword" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top" Width="204" Password="" PasswordChanged="PasswordBox_PasswordChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,192,0,0" TextWrapping="Wrap" Text="Введите пароль повторно:" VerticalAlignment="Top" Foreground="#FF2CAB00" FontWeight="Bold"/>
-        <TextBox x:Name="TBExperience" HorizontalAlignment="Left" Margin="126,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" Height="18"/>
-        <Button x:Name="ButtonRegist" Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="10,372,0,0" VerticalAlignment="Top" Width="204" Click="ButtonRegist_Click"/>
-        <DatePicker x:Name="DPDateOfBirth" HorizontalAlignment="Left" Margin="10,262,0,0" VerticalAlignment="Top" Height="18" FontSize="8" Width="87"/>
-        <TextBox x:Name="TBEmail" HorizontalAlignment="Left" Margin="10,306,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="18"/>
-        <TextBox x:Name="TBTelephone" HorizontalAlignment="Left" Margin="10,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="18"/>
-        <Button x:Name="ButtonExit" Content="Назад" HorizontalAlignment="Left" Margin="10,398,0,0" VerticalAlignment="Top" Width="204" Click="ButtonExit_Click"/>
-        <TextBlock Margin="52,20,0,0" Text="Регистрация" VerticalAlignment="Top" Width="120" Foreground="#FF0027FF" FontSize="18" HorizontalAlignment="Left" TextWrapping="Wrap" TextAlignment="Center" Height="24" FontWeight="Bold"/>
-        <TextBox x:Name="TBPassword" HorizontalAlignment="Left" Margin="10,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204"/>
+    <Grid Tag="" Background="#FF66021F">
+        <TextBlock HorizontalAlignment="Left" Margin="298,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFFFE9EC" FontWeight="Bold"><Run Text="Введите "/><Run Language="ru-ru" Text="фамилию"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="TBsurname" HorizontalAlignment="Center" Margin="0,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204"/>
+        <TextBlock HorizontalAlignment="Left" Margin="298,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFFFE9EC" FontWeight="Bold"><Run Text="Введите "/><Run Language="ru-ru" Text="имя"/><Run Text=":"/></TextBlock>
+        <TextBox x:Name="TBname" HorizontalAlignment="Center" Margin="0,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204"/>
+        <TextBlock HorizontalAlignment="Left" Margin="298,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFFFE9EC" FontWeight="Bold"><Run Text="Введите пароль повторно"/><Run Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="298,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFFFE9EC" FontWeight="Bold"><Run Text="Введите пароль"/><Run Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="298,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFFFE9EC" FontWeight="Bold"><Run Text="Введите "/><Run Language="ru-ru" Text="отчество"/><Run Text=":"/></TextBlock>
+        <PasswordBox x:Name="PBpassword" HorizontalAlignment="Center" Margin="0,318,0,0" VerticalAlignment="Top" Width="204" Password="" PasswordChanged="PasswordBox_PasswordChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="298,210,0,0" TextWrapping="Wrap" Text="Введите email:" VerticalAlignment="Top" Foreground="#FFFFE9EC" FontWeight="Bold"/>
+        <TextBox x:Name="TBpass" HorizontalAlignment="Center" Margin="0,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="18"/>
+        <Button x:Name="ButtonRegist" Content="Зарегистрироваться" HorizontalAlignment="Center" Margin="0,368,0,0" VerticalAlignment="Top" Width="204" Click="ButtonRegist_Click" Foreground="#FF66021F" FontWeight="Bold" Background="#FFFFE9EC"/>
+        <TextBox x:Name="TBemail" HorizontalAlignment="Center" Margin="0,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="18"/>
+        <Button x:Name="ButtonExit" Content="Назад" HorizontalAlignment="Center" Margin="0,393,0,0" VerticalAlignment="Top" Width="204" Click="ButtonExit_Click" Foreground="#FF66021F" FontWeight="Bold" Background="#FFFFE9EC"/>
+        <TextBlock Margin="0,32,0,0" Text="Регистрация" VerticalAlignment="Top" Width="120" Foreground="#FFFFE9EC" FontSize="18" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Height="24" FontWeight="Bold"/>
+        <TextBox x:Name="TBpatronymic" HorizontalAlignment="Center" Margin="0,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204"/>
     </Grid>
 </Page>

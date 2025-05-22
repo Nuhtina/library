@@ -23,6 +23,12 @@ namespace library
         public MainWindow()
         {
             InitializeComponent();
+
+
+            ApplicationData.AppConnect.model01 = new ApplicationData.booksEntities();
+
+            ApplicationData.AppFrame.frmMain2 = frameMain;
+            frameMain.Navigate(new Pages.Autorization());
         }
     }
 }

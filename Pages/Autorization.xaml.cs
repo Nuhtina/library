@@ -1,4 +1,5 @@
-﻿using System;
+﻿using library.ApplicationData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,7 @@ namespace library.Pages
         {
             try
             {
-                var userObj = ApplicationData.AppConnect.model01.Authors.FirstOrDefault(x => x.Login == TBLogin.Text && x.Password == PBPassword.Password);
+                var userObj = ApplicationData.AppConnect.model01.user.FirstOrDefault(x => x.email == TBemail.Text && x.password == PBpassword.Password);
                 if (userObj == null)
                 {
                     MessageBox.Show("Такого пользователя нет", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -39,7 +40,7 @@ namespace library.Pages
                 else
                 {
                     MessageBox.Show("Здравствуйте", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                    AppConnect.AuthorID = userObj.AuthorID;
+                    AppConnect.ID_us = userObj.ID_us;
                     NavigationService.Navigate(new DataOutput());
                 }
             }

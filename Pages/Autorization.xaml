@@ -8,12 +8,12 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Autorization">
 
-    <Grid Margin="0,0,10,0">
+    <Grid Margin="0,0,10,0" Background="#FF66021F">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="TBLogin" HorizontalAlignment="Center" Margin="0,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5" Height="20">
+        <TextBox x:Name="TBemail" HorizontalAlignment="Center" Margin="0,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" RenderTransformOrigin="0.5,0.5" Height="20">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -23,12 +23,12 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <TextBlock HorizontalAlignment="Center" Margin="0,136,0,0" TextWrapping="Wrap" Text="Введите логин" VerticalAlignment="Top" Width="120" Foreground="#FF2CAB00" Height="16" FontWeight="Bold"/>
-        <PasswordBox x:Name="PBPassword" HorizontalAlignment="Center" Margin="0,196,0,0" VerticalAlignment="Top" Width="120" Height="20"/>
-        <Button x:Name="ButtonVhod" HorizontalAlignment="Center" Margin="0,221,0,0" VerticalAlignment="Top" Width="120" Content="Войти" Height="20" Click="Button_Click_1"/>
-        <Button x:Name="ButtonRegistr" Content="Регистрация" HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top" Width="120" Height="20" Click="ButtonRegistr_Click"/>
-        <TextBlock Margin="0,98,0,0" Text="Авторизация" VerticalAlignment="Top" Width="120" Foreground="#FF0027FF" FontSize="18" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Height="24" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,175,0,0" TextWrapping="Wrap" Text="Введите пароль" VerticalAlignment="Top" Width="120" Foreground="#FF2CAB00" Height="16" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="293,130,0,0" TextWrapping="Wrap" Text="Введите почту" VerticalAlignment="Top" Width="120" Foreground="#FFFFE9EC" Height="16" FontWeight="Bold"/>
+        <PasswordBox x:Name="PBpassword" HorizontalAlignment="Center" Margin="0,194,0,0" VerticalAlignment="Top" Width="204" Height="20"/>
+        <Button x:Name="ButtonVhod" HorizontalAlignment="Center" Margin="0,238,0,0" VerticalAlignment="Top" Width="204" Content="Войти" Height="20" Click="Button_Click_1" Background="#FFFFE9EC" FontWeight="Bold"/>
+        <Button x:Name="ButtonRegistr" Content="Регистрация" HorizontalAlignment="Center" Margin="0,263,0,0" VerticalAlignment="Top" Width="204" Height="20" Click="ButtonRegistr_Click" Background="#FFFFE9EC" FontWeight="Bold"/>
+        <TextBlock Margin="0,77,0,0" Text="Авторизация" VerticalAlignment="Top" Width="120" Foreground="#FFFFE9EC" FontSize="18" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Height="24" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="293,173,0,0" TextWrapping="Wrap" Text="Введите пароль" VerticalAlignment="Top" Width="120" Foreground="#FFFFE9EC" Height="16" FontWeight="Bold"/>
 
     </Grid>
 </Page>

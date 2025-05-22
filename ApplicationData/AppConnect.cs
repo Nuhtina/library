@@ -8,7 +8,7 @@ namespace library.ApplicationData
 {
     internal class AppConnect
     {
-        public static int AuthorID;
-        public static RecipeBookEntities3 model01;
+        public static int ID_us;
+        public static booksEntities model01;
     }
 }
