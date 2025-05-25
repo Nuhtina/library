@@ -22,31 +22,31 @@ namespace library.Pages
     /// </summary>
     public partial class DataOutput : Page
     {
-        //private List<Recipes> allRecipes;
-        //private Recipes selectedRecipe;
+        private List<books> allBooks;
+        private books selectedBooks;
         public DataOutput()
         {
             InitializeComponent();
-            //ComboFilter.SelectedIndex = 0;
-            //ComboSort.SelectedIndex = 0;
+            ComboFilter.SelectedIndex = 0;
+            ComboSort.SelectedIndex = 0;
 
-            //allRecipes = AppConnect.model01.Recipes.ToList();
-            //listProducts.ItemsSource = allRecipes;
+            allBooks = AppConnect.model01.books.ToList();
+            listBooks.ItemsSource = allBooks;
 
-            //var categories = AppConnect.model01.Categories.ToList();
-            //foreach (var category in categories)
-            //{
-            //    ComboFilter.Items.Add(new ComboBoxItem { Content = category.CategoryName });
-            //}
-            //UpdateFoundCount(allRecipes.Count);
+            var genres = AppConnect.model01.genres.ToList();
+            foreach (var genre in genres)
+            {
+                ComboFilter.Items.Add(new ComboBoxItem { Content = genres.name });
+            }
+            UpdateFoundCount(allBooks.Count);
         }
         private void listProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //selectedRecipe = listProducts.SelectedItem as Recipes;
-            //if (selectedRecipe != null)
-            //{
-            //    Debug.WriteLine($"Выбран рецепт: {selectedRecipe.RecipeName}");
-            //}
+            selectedBooks = listBooks.SelectedItem as books;
+            if (selectedBooks != null)
+            {
+                Debug.WriteLine($"Выбран рецепт: {selectedBooks.name}");
+            }
         }
         private void ComboFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -66,67 +66,67 @@ namespace library.Pages
         }
         private void ResetSearch_Click(object sender, RoutedEventArgs e)
         {
-            //TextSearch.Text = string.Empty;
-            //ComboFilter.SelectedIndex = 0;
-            //UpdateRecipeList();
+            TextSearch.Text = string.Empty;
+            ComboFilter.SelectedIndex = 0;
+            UpdateBooksList();
         }
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            //if (listProducts.SelectedItem is Recipes selectedRecipe)
-            //{
-            //    EditRecipe editPage = new EditRecipe(selectedRecipe);
-            //    editPage.RecipeUpdated += UpdateRecipeList;
-            //    NavigationService.Navigate(editPage);
-            //}
+            if (listBooks.SelectedItem is books selectedBooks)
+            {
+                EditBooks editPage = new EditBook(selectedBooks);
+                editPage.BooksUpdated += UpdateBooksList;
+                NavigationService.Navigate(editPage);
+            }
         }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            //Recipes newRecipe = new Recipes();
-            //EditRecipe editPage = new EditRecipe(newRecipe);
-            //editPage.RecipeUpdated += UpdateRecipeList;
-            //NavigationService.Navigate(editPage);
+            books newBook = new books();
+            EditBook editPage = new EditBook(newBook);
+            editPage.BooksUpdated += UpdateBooksList;
+            NavigationService.Navigate(editPage);
         }
         private void UpdateRecipeList()
         {
-            //string searchText = TextSearch.Text.ToLower();
-            //string selectedCategory = (ComboFilter.SelectedItem as ComboBoxItem)?.Content.ToString();
-            //if (allRecipes == null)
-            //{
-            //    UpdateFoundCount(0);
-            //    return;
-            //}
-            //var filteredRecipes = allRecipes.Where(recipe =>
-            //    recipe != null &&
-            //    recipe.RecipeName != null &&
-            //    recipe.RecipeName.ToLower().Contains(searchText) &&
-            //    (selectedCategory == "Все категории" ||
-            //     (recipe.Categories != null && recipe.Categories.CategoryName == selectedCategory)))
-            //    .ToList();
+            string searchText = TextSearch.Text.ToLower();
+            string selectedBooks = (ComboFilter.SelectedItem as ComboBoxItem)?.Content.ToString();
+            if (allBooks == null)
+            {
+                UpdateFoundCount(0);
+                return;
+            }
+            var filteredBooks = allBooks.Where(books =>
+                books != null &&
+                books.name != null &&
+                books.name.ToLower().Contains(searchText) &&
+                (selectedBooks == "Жанр" ||
+                 (books.genres != null && books.genres.name == selectedBooks)))
+                .ToList();
 
-            //List<Recipes> sortedRecipes;
-            //if (ComboSort.SelectedItem is ComboBoxItem selectedItem)
-            //{
-            //    string sortBy = selectedItem.Content.ToString();
-            //    switch (sortBy)
-            //    {
-            //        case "Сортировать по имени":
-            //            sortedRecipes = filteredRecipes.OrderBy(recipe => recipe.RecipeName).ToList();
-            //            break;
-            //        case "Сортировать по времени приготовления":
-            //            sortedRecipes = filteredRecipes.OrderBy(recipe => recipe.CookingTime).ToList();
-            //            break;
-            //        case "Не сортировать":
-            //        default:
-            //            sortedRecipes = filteredRecipes;
-            //            break;
-            //    }
-            //}
-            //else
-            //{
-            //    sortedRecipes = filteredRecipes;
-            //}
-            //listProducts.ItemsSource = sortedRecipes;
-            //UpdateFoundCount(sortedRecipes.Count);
+            List<books> sortedBooks;
+            if (ComboSort.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string sortBy = selectedItem.Content.ToString();
+                switch (sortBy)
+                {
+                    case "Сортировать от А до Я":
+                        sortedBooks = filteredBooks.OrderBy(books => books.name).ToList();
+                        break;
+                    case "Сортировать от Я до А":
+                        sortedBooks = filteredBooks.OrderBy(books => books.name).ToList();
+                        break;
+                    case "Не сортировать":
+                    default:
+                        sortedBooks = filteredBooks;
+                        break;
+                }
+            }
+            else
+            {
+                sortedBooks = filteredBooks;
+            }
+            listBooks.ItemsSource = sortedBooks;
+            UpdateFoundCount(sortedBooks.Count);
         }
         private void UpdateFoundCount(int count)
         {
@@ -134,42 +134,42 @@ namespace library.Pages
         }
         private void AddToFavoritesButton_Click(object sender, RoutedEventArgs e)
         {
-            //selectedRecipe = listProducts.SelectedItem as Recipes;
+            selectedBooks = listBooks.SelectedItem as books;
 
-            //if (selectedRecipe == null)
-            //{
-            //    MessageBox.Show("Выберите рецепт!");
-            //    return;
-            //}
+            if (selectedBooks == null)
+            {
+                MessageBox.Show("Выберите книгу!");
+                return;
+            }
 
-            //try
-            //{
-            //    int currentUserId = AppConnect.AuthorID;
+            try
+            {
+                int currentUserId = AppConnect.ID_us;
 
-            //    var existingLike = AppConnect.model01.LikeRecipes
-            //        .FirstOrDefault(l => l.AuthorID == currentUserId
-            //                           && l.RecipeID == selectedRecipe.RecipeID);
-            //    if (existingLike != null)
-            //    {
-            //        MessageBox.Show("Этот рецепт уже в избранном!");
-            //        return;
-            //    }
+                var existingLike = AppConnect.model01.favourites
+                    .FirstOrDefault(l => l.ID_us == currentUserId
+                                       && l.ID_us == selectedBooks.ID_bk);
+                if (existingLike != null)
+                {
+                    MessageBox.Show("Эта книга уже в избранном!");
+                    return;
+                }
 
-            //    var newLike = new LikeRecipes
-            //    {
-            //        AuthorID = currentUserId,
-            //        RecipeID = selectedRecipe.RecipeID
-            //    };
+                var newLike = new favourites
+                {
+                    ID_us = currentUserId,
+                    ID_bk = selectedBooks.ID_bk
+                };
 
-            //    AppConnect.model01.LikeRecipes.Add(newLike);
-            //    AppConnect.model01.SaveChanges();
-            //    MessageBox.Show("Рецепт добавлен в избранное!");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Debug.WriteLine($"ERROR: {ex}\n{ex.StackTrace}");
-            //    MessageBox.Show($"Ошибка: {ex.Message}");
-            //}
+                AppConnect.model01.favourites.Add(newLike);
+                AppConnect.model01.SaveChanges();
+                MessageBox.Show("Книга добавлена в избранное!");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"ERROR: {ex}\n{ex.StackTrace}");
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
         }
         private void ViewFavoritesButton_Click(object sender, RoutedEventArgs e)
         {

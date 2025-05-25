@@ -22,31 +22,31 @@ namespace library.Pages
     /// </summary>
     public partial class EditBook : Page
     {
-        //private books book;
-        //public event Action RecipeUpdated;
+        private books book;
+        public event Action BooksUpdated;
         public EditBook(books book)
         {
             InitializeComponent();
-            //this.recipe = recipe ?? throw new ArgumentNullException(nameof(recipe));
+            this.recipe = recipe ?? throw new ArgumentNullException(nameof(recipe));
 
-            //EditRecipeName.Text = recipe.RecipeName;
-            //EditDescription.Text = recipe.DescriptionN;
-            //EditCookingTime.Text = recipe.CookingTime ?? "0";
+            EditRecipeName.Text = recipe.RecipeName;
+            EditDescription.Text = recipe.DescriptionN;
+            EditCookingTime.Text = recipe.CookingTime ?? "0";
 
-            //LoadAuthors();
-            //LoadCategories();
+            LoadAuthors();
+            LoadCategories();
 
-            //EditAuthor.SelectedItem = recipe.Authors;
-            //EditCategory.SelectedItem = recipe.Categories;
+            EditAuthor.SelectedItem = recipe.Authors;
+            EditCategory.SelectedItem = recipe.Categories;
         }
 
         public EditBook()
         {
-            //InitializeComponent();
-            //recipe = new Recipes();
+            InitializeComponent();
+            book = new books();
 
-            //LoadAuthors();
-            //LoadCategories();
+            LoadAuthors();
+            LoadCategories();
         }
 
         private void LoadAuthors()
