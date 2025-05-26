@@ -27,17 +27,17 @@ namespace library.Pages
         public EditBook(books book)
         {
             InitializeComponent();
-            this.recipe = recipe ?? throw new ArgumentNullException(nameof(recipe));
+            this.book = book ?? throw new ArgumentNullException(nameof(book));
 
-            EditRecipeName.Text = recipe.RecipeName;
-            EditDescription.Text = recipe.DescriptionN;
-            EditCookingTime.Text = recipe.CookingTime ?? "0";
+            EditBookName.Text = books.name;
+            EditDescription.Text = books.DescriptionN;
+            EditCookingTime.Text = books.CookingTime ?? "0";
 
             LoadAuthors();
             LoadCategories();
 
-            EditAuthor.SelectedItem = recipe.Authors;
-            EditCategory.SelectedItem = recipe.Categories;
+            //EditAuthor.SelectedItem = recipe.Authors;
+            //EditCategory.SelectedItem = recipe.Categories;
         }
 
         public EditBook()

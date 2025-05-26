@@ -16,13 +16,13 @@
         <TextBlock HorizontalAlignment="Left" Margin="298,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFFFE9EC" FontWeight="Bold"><Run Text="Введите пароль повторно"/><Run Text=":"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="298,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFFFE9EC" FontWeight="Bold"><Run Text="Введите пароль"/><Run Text=":"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="298,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFFFE9EC" FontWeight="Bold"><Run Text="Введите "/><Run Language="ru-ru" Text="отчество"/><Run Text=":"/></TextBlock>
-        <PasswordBox x:Name="PBpassword" HorizontalAlignment="Center" Margin="0,318,0,0" VerticalAlignment="Top" Width="204" Password="" PasswordChanged="PasswordBox_PasswordChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="298,210,0,0" TextWrapping="Wrap" Text="Введите email:" VerticalAlignment="Top" Foreground="#FFFFE9EC" FontWeight="Bold"/>
-        <TextBox x:Name="TBpass" HorizontalAlignment="Center" Margin="0,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="18"/>
-        <Button x:Name="ButtonRegist" Content="Зарегистрироваться" HorizontalAlignment="Center" Margin="0,368,0,0" VerticalAlignment="Top" Width="204" Click="ButtonRegist_Click" Foreground="#FF66021F" FontWeight="Bold" Background="#FFFFE9EC"/>
-        <TextBox x:Name="TBemail" HorizontalAlignment="Center" Margin="0,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="18"/>
-        <Button x:Name="ButtonExit" Content="Назад" HorizontalAlignment="Center" Margin="0,393,0,0" VerticalAlignment="Top" Width="204" Click="ButtonExit_Click" Foreground="#FF66021F" FontWeight="Bold" Background="#FFFFE9EC"/>
-        <TextBlock Margin="0,32,0,0" Text="Регистрация" VerticalAlignment="Top" Width="120" Foreground="#FFFFE9EC" FontSize="18" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Height="24" FontWeight="Bold"/>
         <TextBox x:Name="TBpatronymic" HorizontalAlignment="Center" Margin="0,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204"/>
+        <TextBlock HorizontalAlignment="Left" Margin="298,210,0,0" TextWrapping="Wrap" Text="Введите email:" VerticalAlignment="Top" Foreground="#FFFFE9EC" FontWeight="Bold"/>
+        <TextBox x:Name="TBemail" HorizontalAlignment="Center" Margin="0,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="18"/>
+        <TextBlock Margin="0,32,0,0" Text="Регистрация" VerticalAlignment="Top" Width="120" Foreground="#FFFFE9EC" FontSize="18" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Height="24" FontWeight="Bold"/>
+        <TextBox x:Name="TBpass" HorizontalAlignment="Center" Margin="0,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Height="18"/>
+        <PasswordBox x:Name="PBpassword" HorizontalAlignment="Center" Margin="0,318,0,0" VerticalAlignment="Top" Width="204" Password="" PasswordChanged="PasswordBox_PasswordChanged"/>
+        <Button x:Name="ButtonRegist" Content="Зарегистрироваться" HorizontalAlignment="Center" Margin="0,368,0,0" VerticalAlignment="Top" Width="204" Click="ButtonRegist_Click" Foreground="#FF66021F" FontWeight="Bold" Background="#FFFFE9EC"/>
+        <Button x:Name="ButtonExit" Content="Назад" HorizontalAlignment="Center" Margin="0,393,0,0" VerticalAlignment="Top" Width="204" Click="ButtonExit_Click" Foreground="#FF66021F" FontWeight="Bold" Background="#FFFFE9EC"/>
     </Grid>
 </Page>

@@ -51,10 +51,10 @@
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Source="{Binding CurrentPhoto}"></Image>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="5" Grid.Column="1">
-                                <TextBlock Width="auto" TextWrapping="Wrap" Height="auto" Text="{Binding books.name}" FontWeight="Bold" FontSize="16" Foreground="#FF0027FF"/>
+                                <TextBlock Width="auto" TextWrapping="Wrap" Height="auto" Text="{Binding name}" FontWeight="Bold" FontSize="16" Foreground="#FF66021F"/>
                                 <TextBlock Width="auto" TextWrapping="Wrap" Height="auto">
                             <Run Text="Автор: "/>
-                            <Run Text="{Binding Authors.surname}"/>
+                            <Run Text="{Binding authors.surname}"/>
                                 </TextBlock>
                                 <TextBlock Width="auto" TextWrapping="Wrap" Height="auto">
                             <Run Text="Тип литературы: "/>
@@ -74,7 +74,7 @@
                                 </TextBlock>
                                 <TextBlock Width="auto" TextWrapping="Wrap" Height="auto">
                             <Run Text="Переплет: "/>
-                            <Run Text="{Binding Binding.name}"/>
+                            <Run Text="{Binding binding.name}"/>
                                 </TextBlock>
                             </StackPanel>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Grid.Column="2" Margin="5">

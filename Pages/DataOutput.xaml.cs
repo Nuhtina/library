@@ -36,33 +36,33 @@ namespace library.Pages
             var genres = AppConnect.model01.genres.ToList();
             foreach (var genre in genres)
             {
-                ComboFilter.Items.Add(new ComboBoxItem { Content = genres.name });
+                //ComboFilter.Items.Add(new ComboBoxItem { Content = genres.name });
             }
             UpdateFoundCount(allBooks.Count);
         }
-        private void listProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void listBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedBooks = listBooks.SelectedItem as books;
             if (selectedBooks != null)
             {
-                Debug.WriteLine($"Выбран рецепт: {selectedBooks.name}");
+                Debug.WriteLine($"Выбрана книга: {selectedBooks.name}");
             }
         }
         private void ComboFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateRecipeList();
+            UpdateBooksList();
         }
         private void ComboSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateRecipeList();
+            UpdateBooksList();
         }
         private void ApplySearch_Click(object sender, RoutedEventArgs e)
         {
-            UpdateRecipeList();
+            UpdateBooksList();
         }
         private void TextSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            UpdateRecipeList();
+            UpdateBooksList();
         }
         private void ResetSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -74,9 +74,9 @@ namespace library.Pages
         {
             if (listBooks.SelectedItem is books selectedBooks)
             {
-                EditBooks editPage = new EditBook(selectedBooks);
-                editPage.BooksUpdated += UpdateBooksList;
-                NavigationService.Navigate(editPage);
+                //EditBooks editPage = new EditBook(selectedBooks);
+                //editPage.BooksUpdated += UpdateBooksList;
+                //NavigationService.Navigate(editPage);
             }
         }
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -86,7 +86,7 @@ namespace library.Pages
             editPage.BooksUpdated += UpdateBooksList;
             NavigationService.Navigate(editPage);
         }
-        private void UpdateRecipeList()
+        private void UpdateBooksList()
         {
             string searchText = TextSearch.Text.ToLower();
             string selectedBooks = (ComboFilter.SelectedItem as ComboBoxItem)?.Content.ToString();
@@ -162,7 +162,7 @@ namespace library.Pages
                 };
 
                 AppConnect.model01.favourites.Add(newLike);
-                AppConnect.model01.SaveChanges();
+                //AppConnect.model01.SaveChanges();
                 MessageBox.Show("Книга добавлена в избранное!");
             }
             catch (Exception ex)
