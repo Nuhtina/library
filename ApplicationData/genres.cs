@@ -14,14 +14,7 @@ namespace library.ApplicationData
     
     public partial class genres
     {
-        public genres()
-        {
-            this.books = new HashSet<books>();
-        }
-    
         public int ID_g { get; set; }
         public string name { get; set; }
-    
-        public virtual ICollection<books> books { get; set; }
     }
 }

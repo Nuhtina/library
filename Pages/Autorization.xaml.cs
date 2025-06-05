@@ -32,16 +32,29 @@ namespace library.Pages
         {
             try
             {
-                var userObj = ApplicationData.AppConnect.model01.user.FirstOrDefault(x => x.email == TBemail.Text && x.password == PBpassword.Password);
+                var userObj = ApplicationData.AppConnect.model02.user.FirstOrDefault(x => x.email == TBemail.Text && x.password == PBpassword.Password);
                 if (userObj == null)
                 {
                     MessageBox.Show("Такого пользователя нет", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
-                    MessageBox.Show("Здравствуйте", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show($"Здравствуйте, {userObj.name}!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information); 
                     AppConnect.ID_us = userObj.ID_us;
-                    NavigationService.Navigate(new DataOutput());
+                    // Проверка роли пользователя и перенаправление
+                    switch (userObj.ID_r)
+                    {
+                        case 1: // Администратор
+                            NavigationService.Navigate(new Journal());
+                            break;
+                        case 2: // Обычный пользователь
+                            NavigationService.Navigate(new DataOutput());
+                            break;
+                        default:
+                            MessageBox.Show("Неизвестный тип пользователя", "Ошибка",
+                                          MessageBoxButton.OK, MessageBoxImage.Error);
+                            break;
+                    }
                 }
             }
             catch (Exception ex)

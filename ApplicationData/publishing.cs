@@ -14,14 +14,7 @@ namespace library.ApplicationData
     
     public partial class publishing
     {
-        public publishing()
-        {
-            this.books = new HashSet<books>();
-        }
-    
         public int ID_pg { get; set; }
         public string name { get; set; }
-    
-        public virtual ICollection<books> books { get; set; }
     }
 }

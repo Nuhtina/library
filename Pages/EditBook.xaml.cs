@@ -29,14 +29,14 @@ namespace library.Pages
             InitializeComponent();
             this.book = book ?? throw new ArgumentNullException(nameof(book));
 
-            EditBookName.Text = books.name;
-            EditDescription.Text = books.DescriptionN;
-            EditCookingTime.Text = books.CookingTime ?? "0";
+            EditBook.Text = book.name;
+            EditQuantity.Text = book.quantity;
+            EditYear.Text = book.year_of_public;
 
-            LoadAuthors();
-            LoadCategories();
+            LoadBook();
+            //LoadCategories();
 
-            //EditAuthor.SelectedItem = recipe.Authors;
+            EditBook.SelectedItem = book.name;
             //EditCategory.SelectedItem = recipe.Categories;
         }
 
@@ -45,86 +45,86 @@ namespace library.Pages
             InitializeComponent();
             book = new books();
 
-            LoadAuthors();
-            LoadCategories();
+            LoadBook();
+            //LoadCategories();
         }
 
-        private void LoadAuthors()
+        private void LoadBook()
         {
-            //var authors = AppConnect.model01.Authors.ToList();
-            //EditAuthor.ItemsSource = authors;
-            //EditAuthor.DisplayMemberPath = "AuthorName";
+            var book = AppConnect.model02.books.ToList();
+            EditBook.ItemsSource = name;
+            EditBook.DisplayMemberPath = "Name";
         }
 
-        private void LoadCategories()
-        {
-            //var categories = AppConnect.model01.Categories.ToList();
-            //EditCategory.ItemsSource = categories;
-            //EditCategory.DisplayMemberPath = "CategoryName";
-        }
+        //private void LoadCategories()
+        //{
+        //    //var categories = AppConnect.model01.Categories.ToList();
+        //    //EditCategory.ItemsSource = categories;
+        //    //EditCategory.DisplayMemberPath = "CategoryName";
+        //}
 
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
-            //recipe.RecipeName = EditRecipeName.Text;
-            //recipe.DescriptionN = EditDescription.Text;
-            //recipe.Authors = (Authors)EditAuthor.SelectedItem;
-            //recipe.Categories = (Categories)EditCategory.SelectedItem;
+            books.name = EditBook.Text;
+            books.quantity = EditQuantity.Text;
+            books.Authors = (Authors)EditAuthor.SelectedItem;
+            recipe.Categories = (Categories)EditCategory.SelectedItem;
 
-            //if (!int.TryParse(EditCookingTime.Text, out int cookingTime) || cookingTime <= 0)
-            //{
-            //    MessageBox.Show("Пожалуйста, введите корректное время приготовления.");
-            //    return;
-            //}
-            //recipe.CookingTime = cookingTime.ToString();
-            //if (recipe.RecipeID == 0)
-            //{
-            //    AppConnect.model01.Recipes.Add(recipe);
-            //}
-            //else
-            //{
-            //    AppConnect.model01.Entry(recipe).State = EntityState.Modified;
-            //}
-            //AppConnect.model01.SaveChanges();
-            //RecipeUpdated?.Invoke();
-            //NavigationService.GoBack();
+            if (!int.TryParse(EditYear.Text, out int year) || year <= 0)
+            {
+                MessageBox.Show("Пожалуйста, введите корректный год.");
+                return;
+            }
+            books.year = year.ToString();
+            if (books.ID_bk == 0)
+            {
+                AppConnect.model02.books.Add(book);
+            }
+            else
+            {
+                AppConnect.model02.Entry(book).State = EntityState.Modified;
+            }
+            AppConnect.model02.SaveChanges();
+            BooksUpdated?.Invoke();
+            NavigationService.GoBack();
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            //if (NavigationService != null)
-            //{
-            //    NavigationService.Navigate(new DataOutput());
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Не удалось выполнить навигацию. Попробуйте еще раз.");
-            //}
+            if (NavigationService != null)
+            {
+                NavigationService.Navigate(new DataOutput());
+            }
+            else
+            {
+                MessageBox.Show("Не удалось выполнить навигацию. Попробуйте еще раз.");
+            }
         }
         private void LoadImageButton(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    var dialog = new OpenFileDialog();
-            //    dialog.InitialDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Images"));
+            try
+            {
+                var dialog = new OpenFileDialog();
+                dialog.InitialDirectory = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\Images"));
 
-            //    dialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif|All Files|*.*";
-            //    dialog.Title = "Выберите изображение";
+                dialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif|All Files|*.*";
+                dialog.Title = "Выберите изображение";
 
-            //    if (dialog.ShowDialog() == true)
-            //    {
-            //        string photoName = System.IO.Path.GetFileName(dialog.FileName);
-            //        recipe.ImageE = photoName;
-            //        MessageBox.Show("Изображение загружено: " + photoName, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Изображение не выбрано.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Ошибка при загрузке изображения: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
+                if (dialog.ShowDialog() == true)
+                {
+                    string photoName = System.IO.Path.GetFileName(dialog.FileName);
+                    books.image = photoName;
+                    MessageBox.Show("Изображение загружено: " + photoName, "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Изображение не выбрано.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при загрузке изображения: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

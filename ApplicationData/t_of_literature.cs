@@ -14,14 +14,7 @@ namespace library.ApplicationData
     
     public partial class t_of_literature
     {
-        public t_of_literature()
-        {
-            this.books = new HashSet<books>();
-        }
-    
         public int ID_tl { get; set; }
         public string name { get; set; }
-    
-        public virtual ICollection<books> books { get; set; }
     }
 }

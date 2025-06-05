@@ -21,17 +21,17 @@ namespace library.Pages
     /// </summary>
     public partial class PageLike : Page
     {
-        //private List<Recipes> recipes;
+        private List<books> books;
         public PageLike()
         {
             InitializeComponent();
-            //UpdateLikeRecipes();
+            UpdateLikeBooks();
         }
-        private void UpdateLikeRecipes()
+        private void UpdateLikeBooks()
         {
-            //var likeRecipes = AppConnect.model01.LikeRecipes.Where(x => x.AuthorID == AppConnect.AuthorID).Select(x => x.RecipeID).ToList();
-            //recipes = AppConnect.model01.Recipes.Where(x => likeRecipes.Contains(x.RecipeID)).ToList();
-            //listProducts.ItemsSource = recipes;
+            var likeBook = AppConnect.model02.favourites.Where(x => x.ID_us == AppConnect.ID_us).Select(x => x.ID_bk).ToList();
+            books = AppConnect.model02.books.Where(x => likeBook.Contains(x.ID_bk)).ToList();
+            listBooks.ItemsSource = books;
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -40,17 +40,17 @@ namespace library.Pages
         }
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            //var result = MessageBox.Show("Вы действительно хотите удалить рецепт из избранного?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            //if (result == MessageBoxResult.Yes)
-            //{
-            //    var button = sender as Button;
-            //    var recipe = (Recipes)button.DataContext;
-            //    var itemToRemove = AppConnect.model01.LikeRecipes.FirstOrDefault(r => r.RecipeID == recipe.RecipeID && AppConnect.AuthorID == r.AuthorID);
-            //    AppConnect.model01.LikeRecipes.Remove(itemToRemove);
-            //    AppConnect.model01.SaveChanges();
-            //    UpdateLikeRecipes();
-            //    MessageBox.Show("Рецепт удален из избранного!");
-            //}
+            var result = MessageBox.Show("Вы действительно хотите удалить книгу из избранного?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                var button = sender as Button;
+                var book = (books)button.DataContext;
+                var itemToRemove = AppConnect.model02.favourites.FirstOrDefault(b => b.ID_bk == books.ID_bk && AppConnect.ID_us == b.ID_us);
+                AppConnect.model02.favourites.Remove(itemToRemove);
+                AppConnect.model02.SaveChanges();
+                UpdateLikeRecipes();
+                MessageBox.Show("Книга удалена из избранного!");
+            }
         }
 
         private void btnWord_Click(object sender, RoutedEventArgs e)

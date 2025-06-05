@@ -14,14 +14,7 @@ namespace library.ApplicationData
     
     public partial class role
     {
-        public role()
-        {
-            this.user = new HashSet<user>();
-        }
-    
         public int ID_r { get; set; }
         public string name { get; set; }
-    
-        public virtual ICollection<user> user { get; set; }
     }
 }

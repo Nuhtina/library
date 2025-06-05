@@ -25,7 +25,7 @@ namespace library
             InitializeComponent();
 
 
-            ApplicationData.AppConnect.model01 = new ApplicationData.booksEntities();
+            ApplicationData.AppConnect.model02 = new ApplicationData.booksEntities1();
 
             ApplicationData.AppFrame.frmMain2 = frameMain;
             frameMain.Navigate(new Pages.Autorization());

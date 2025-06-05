@@ -17,8 +17,5 @@ namespace library.ApplicationData
         public int ID_f { get; set; }
         public Nullable<int> ID_bk { get; set; }
         public Nullable<int> ID_us { get; set; }
-    
-        public virtual books books { get; set; }
-        public virtual user user { get; set; }
     }
 }

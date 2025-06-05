@@ -20,11 +20,11 @@ namespace library.Pages
     /// <summary>
     /// Логика взаимодействия для DataOutput.xaml
     /// </summary>
-    public partial class DataOutput : Page
+    public partial class Journal : Page
     {
         private List<books> allBooks;
         private books selectedBooks;
-        public DataOutput()
+        public Journal()
         {
             InitializeComponent();
             ComboFilter.SelectedIndex = 0;
@@ -36,7 +36,7 @@ namespace library.Pages
             var genres = AppConnect.model02.genres.ToList();
             foreach (var genre in genres)
             {
-                //ComboFilter.Items.Add(new ComboBoxItem { Content = genres.name });
+                ComboFilter.Items.Add(new ComboBoxItem { Content = genres.name });
             }
             UpdateFoundCount(allBooks.Count);
         }
@@ -70,22 +70,22 @@ namespace library.Pages
             ComboFilter.SelectedIndex = 0;
             UpdateBooksList();
         }
-        //private void EditButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (listBooks.SelectedItem is books selectedBooks)
-        //    {
-        //        EditBook editPage = new EditBook(selectedBooks);
-        //        editPage.BooksUpdated += UpdateBooksList;
-        //        NavigationService.Navigate(editPage);
-        //    }
-        //}
-        //private void AddButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    books newBook = new books();
-        //    EditBook editPage = new EditBook(newBook);
-        //    editPage.BooksUpdated += UpdateBooksList;
-        //    NavigationService.Navigate(editPage);
-        //}
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBooks.SelectedItem is books selectedBooks)
+            {
+                EditBook editPage = new EditBook(selectedBooks);
+                editPage.BooksUpdated += UpdateBooksList;
+                NavigationService.Navigate(editPage);
+            }
+        }
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            books newBook = new books();
+            EditBook editPage = new EditBook(newBook);
+            editPage.BooksUpdated += UpdateBooksList;
+            NavigationService.Navigate(editPage);
+        }
         private void UpdateBooksList()
         {
             string searchText = TextSearch.Text.ToLower();
@@ -100,7 +100,7 @@ namespace library.Pages
                 books.name != null &&
                 books.name.ToLower().Contains(searchText) &&
                 (selectedBooks == "Жанр" ||
-                 (books.ID_g != null && genres.name == selectedBooks)))
+                 (books.genres != null && books.genres.name == selectedBooks)))
                 .ToList();
 
             List<books> sortedBooks;
@@ -113,7 +113,7 @@ namespace library.Pages
                         sortedBooks = filteredBooks.OrderBy(books => books.name).ToList();
                         break;
                     case "Сортировать от Я до А":
-                        sortedBooks = filteredBooks.OrderByDescending(books => books.name).ToList();
+                        sortedBooks = filteredBooks.OrderBy(books => books.name).ToList();
                         break;
                     case "Не сортировать":
                     default:
@@ -132,45 +132,45 @@ namespace library.Pages
         {
             TextFoundCount.Text = $"Найдено: {count}";
         }
-        private void AddToFavoritesButton_Click(object sender, RoutedEventArgs e)
-        {
-            selectedBooks = listBooks.SelectedItem as books;
+        //private void AddToFavoritesButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    selectedBooks = listBooks.SelectedItem as books;
 
-            if (selectedBooks == null)
-            {
-                MessageBox.Show("Выберите книгу!");
-                return;
-            }
+        //    if (selectedBooks == null)
+        //    {
+        //        MessageBox.Show("Выберите книгу!");
+        //        return;
+        //    }
 
-            try
-            {
-                int currentUserId = AppConnect.ID_us;
+        //    try
+        //    {
+        //        int currentUserId = AppConnect.ID_us;
 
-                var existingLike = AppConnect.model02.favourites
-                    .FirstOrDefault(l => l.ID_us == currentUserId
-                                       && l.ID_us == selectedBooks.ID_bk);
-                if (existingLike != null)
-                {
-                    MessageBox.Show("Эта книга уже в избранном!");
-                    return;
-                }
+        //        var existingLike = AppConnect.model02.favourites
+        //            .FirstOrDefault(l => l.ID_us == currentUserId
+        //                               && l.ID_us == selectedBooks.ID_bk);
+        //        if (existingLike != null)
+        //        {
+        //            MessageBox.Show("Эта книга уже в избранном!");
+        //            return;
+        //        }
 
-                var newLike = new favourites
-                {
-                    ID_us = currentUserId,
-                    ID_bk = selectedBooks.ID_bk
-                };
+        //        var newLike = new favourites
+        //        {
+        //            ID_us = currentUserId,
+        //            ID_bk = selectedBooks.ID_bk
+        //        };
 
-                AppConnect.model02.favourites.Add(newLike);
-                AppConnect.model02.SaveChanges();
-                MessageBox.Show("Книга добавлена в избранное!");
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"ERROR: {ex}\n{ex.StackTrace}");
-                MessageBox.Show($"Ошибка: {ex.Message}");
-            }
-        }
+        //        AppConnect.model02.favourites.Add(newLike);
+        //        AppConnect.model02.SaveChanges();
+        //        MessageBox.Show("Книга добавлена в избранное!");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine($"ERROR: {ex}\n{ex.StackTrace}");
+        //        MessageBox.Show($"Ошибка: {ex.Message}");
+        //    }
+        //}
         private void ViewFavoritesButton_Click(object sender, RoutedEventArgs e)
         {
             var favoritesPage = new PageLike();

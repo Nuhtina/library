@@ -16,11 +16,9 @@ namespace library.ApplicationData
     {
         public int ID_j { get; set; }
         public Nullable<int> ID_bk { get; set; }
+        public Nullable<int> ID_a { get; set; }
         public Nullable<int> ID_us { get; set; }
         public Nullable<System.DateTime> date_of_issue { get; set; }
         public Nullable<System.DateTime> return_date { get; set; }
-    
-        public virtual books books { get; set; }
-        public virtual user user { get; set; }
     }
 }

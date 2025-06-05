@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище booksModel1" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="authors">
+          <Key>
+            <PropertyRef Name="ID_a" />
+          </Key>
+          <Property Name="ID_a" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="patronymic" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="binding">
+          <Key>
+            <PropertyRef Name="ID_bg" />
+          </Key>
+          <Property Name="ID_bg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="books">
+          <Key>
+            <PropertyRef Name="ID_bk" />
+          </Key>
+          <Property Name="ID_bk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="150" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="year_of_public" Type="date" />
+          <Property Name="ID_a" Type="int" />
+          <Property Name="ID_g" Type="int" />
+          <Property Name="ID_pg" Type="int" />
+          <Property Name="ID_tl" Type="int" />
+          <Property Name="ID_bg" Type="int" />
+        </EntityType>
+        <EntityType Name="favourites">
+          <Key>
+            <PropertyRef Name="ID_f" />
+          </Key>
+          <Property Name="ID_f" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_bk" Type="int" />
+          <Property Name="ID_us" Type="int" />
+        </EntityType>
+        <EntityType Name="genres">
+          <Key>
+            <PropertyRef Name="ID_g" />
+          </Key>
+          <Property Name="ID_g" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="journal">
+          <Key>
+            <PropertyRef Name="ID_j" />
+          </Key>
+          <Property Name="ID_j" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_bk" Type="int" />
+          <Property Name="ID_a" Type="int" />
+          <Property Name="ID_us" Type="int" />
+          <Property Name="date_of_issue" Type="date" />
+          <Property Name="return_date" Type="date" />
+        </EntityType>
+        <EntityType Name="publishing">
+          <Key>
+            <PropertyRef Name="ID_pg" />
+          </Key>
+          <Property Name="ID_pg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="ID_r" />
+          </Key>
+          <Property Name="ID_r" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_of_literature">
+          <Key>
+            <PropertyRef Name="ID_tl" />
+          </Key>
+          <Property Name="ID_tl" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="ID_us" />
+          </Key>
+          <Property Name="ID_us" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_r" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Хранилище booksModel1Container">
+          <EntitySet Name="authors" EntityType="Self.authors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="binding" EntityType="Self.binding" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="books" EntityType="Self.books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="favourites" EntityType="Self.favourites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="genres" EntityType="Self.genres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="journal" EntityType="Self.journal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="publishing" EntityType="Self.publishing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_of_literature" EntityType="Self.t_of_literature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="booksModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="authors">
+          <Key>
+            <PropertyRef Name="ID_a" />
+          </Key>
+          <Property Name="ID_a" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="binding">
+          <Key>
+            <PropertyRef Name="ID_bg" />
+          </Key>
+          <Property Name="ID_bg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="books">
+          <Key>
+            <PropertyRef Name="ID_bk" />
+          </Key>
+          <Property Name="ID_bk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="year_of_public" Type="DateTime" Precision="0" />
+          <Property Name="ID_a" Type="Int32" />
+          <Property Name="ID_g" Type="Int32" />
+          <Property Name="ID_pg" Type="Int32" />
+          <Property Name="ID_tl" Type="Int32" />
+          <Property Name="ID_bg" Type="Int32" />
+        </EntityType>
+        <EntityType Name="favourites">
+          <Key>
+            <PropertyRef Name="ID_f" />
+          </Key>
+          <Property Name="ID_f" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_bk" Type="Int32" />
+          <Property Name="ID_us" Type="Int32" />
+        </EntityType>
+        <EntityType Name="genres">
+          <Key>
+            <PropertyRef Name="ID_g" />
+          </Key>
+          <Property Name="ID_g" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="journal">
+          <Key>
+            <PropertyRef Name="ID_j" />
+          </Key>
+          <Property Name="ID_j" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_bk" Type="Int32" />
+          <Property Name="ID_a" Type="Int32" />
+          <Property Name="ID_us" Type="Int32" />
+          <Property Name="date_of_issue" Type="DateTime" Precision="0" />
+          <Property Name="return_date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="publishing">
+          <Key>
+            <PropertyRef Name="ID_pg" />
+          </Key>
+          <Property Name="ID_pg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="ID_r" />
+          </Key>
+          <Property Name="ID_r" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_of_literature">
+          <Key>
+            <PropertyRef Name="ID_tl" />
+          </Key>
+          <Property Name="ID_tl" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="ID_us" />
+          </Key>
+          <Property Name="ID_us" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_r" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="booksEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="authors" EntityType="Self.authors" />
+          <EntitySet Name="binding" EntityType="Self.binding" />
+          <EntitySet Name="books" EntityType="Self.books" />
+          <EntitySet Name="favourites" EntityType="Self.favourites" />
+          <EntitySet Name="genres" EntityType="Self.genres" />
+          <EntitySet Name="journal" EntityType="Self.journal" />
+          <EntitySet Name="publishing" EntityType="Self.publishing" />
+          <EntitySet Name="role" EntityType="Self.role" />
+          <EntitySet Name="t_of_literature" EntityType="Self.t_of_literature" />
+          <EntitySet Name="user" EntityType="Self.user" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище booksModel1Container" CdmEntityContainer="booksEntities1">
+          <EntitySetMapping Name="authors">
+            <EntityTypeMapping TypeName="booksModel1.authors">
+              <MappingFragment StoreEntitySet="authors">
+                <ScalarProperty Name="ID_a" ColumnName="ID_a" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="binding">
+            <EntityTypeMapping TypeName="booksModel1.binding">
+              <MappingFragment StoreEntitySet="binding">
+                <ScalarProperty Name="ID_bg" ColumnName="ID_bg" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="books">
+            <EntityTypeMapping TypeName="booksModel1.books">
+              <MappingFragment StoreEntitySet="books">
+                <ScalarProperty Name="ID_bk" ColumnName="ID_bk" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="year_of_public" ColumnName="year_of_public" />
+                <ScalarProperty Name="ID_a" ColumnName="ID_a" />
+                <ScalarProperty Name="ID_g" ColumnName="ID_g" />
+                <ScalarProperty Name="ID_pg" ColumnName="ID_pg" />
+                <ScalarProperty Name="ID_tl" ColumnName="ID_tl" />
+                <ScalarProperty Name="ID_bg" ColumnName="ID_bg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="favourites">
+            <EntityTypeMapping TypeName="booksModel1.favourites">
+              <MappingFragment StoreEntitySet="favourites">
+                <ScalarProperty Name="ID_f" ColumnName="ID_f" />
+                <ScalarProperty Name="ID_bk" ColumnName="ID_bk" />
+                <ScalarProperty Name="ID_us" ColumnName="ID_us" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="genres">
+            <EntityTypeMapping TypeName="booksModel1.genres">
+              <MappingFragment StoreEntitySet="genres">
+                <ScalarProperty Name="ID_g" ColumnName="ID_g" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="journal">
+            <EntityTypeMapping TypeName="booksModel1.journal">
+              <MappingFragment StoreEntitySet="journal">
+                <ScalarProperty Name="ID_j" ColumnName="ID_j" />
+                <ScalarProperty Name="ID_bk" ColumnName="ID_bk" />
+                <ScalarProperty Name="ID_a" ColumnName="ID_a" />
+                <ScalarProperty Name="ID_us" ColumnName="ID_us" />
+                <ScalarProperty Name="date_of_issue" ColumnName="date_of_issue" />
+                <ScalarProperty Name="return_date" ColumnName="return_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="publishing">
+            <EntityTypeMapping TypeName="booksModel1.publishing">
+              <MappingFragment StoreEntitySet="publishing">
+                <ScalarProperty Name="ID_pg" ColumnName="ID_pg" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role">
+            <EntityTypeMapping TypeName="booksModel1.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="ID_r" ColumnName="ID_r" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_of_literature">
+            <EntityTypeMapping TypeName="booksModel1.t_of_literature">
+              <MappingFragment StoreEntitySet="t_of_literature">
+                <ScalarProperty Name="ID_tl" ColumnName="ID_tl" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="booksModel1.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="ID_us" ColumnName="ID_us" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="ID_r" ColumnName="ID_r" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

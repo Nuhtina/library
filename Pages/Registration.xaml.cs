@@ -62,7 +62,7 @@ namespace library.Pages
                 return;
             }
 
-            if (ApplicationData.AppConnect.model01.user.Count(x => x.email == TBemail.Text) > 0)
+            if (ApplicationData.AppConnect.model02.user.Count(x => x.email == TBemail.Text) > 0)
             {
                 MessageBox.Show("Пользователь с таким логином уже существует!", "Уведомление",
                                 MessageBoxButton.OK, MessageBoxImage.Information);
@@ -77,10 +77,11 @@ namespace library.Pages
                     name = name,
                     patronymic = patronymic,
                     email = email,
-                    password = password
+                    password = password,
+                    ID_r = 2
                 };
-                AppConnect.model01.user.Add(userObj);
-                AppConnect.model01.SaveChanges();
+                AppConnect.model02.user.Add(userObj);
+                AppConnect.model02.SaveChanges();
                 MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);  
                 TBsurname.Clear();
                 TBname.Clear();

@@ -14,12 +14,6 @@ namespace library.ApplicationData
     
     public partial class user
     {
-        public user()
-        {
-            this.favourites = new HashSet<favourites>();
-            this.journal = new HashSet<journal>();
-        }
-    
         public int ID_us { get; set; }
         public string surname { get; set; }
         public string name { get; set; }
@@ -27,9 +21,5 @@ namespace library.ApplicationData
         public string email { get; set; }
         public string password { get; set; }
         public int ID_r { get; set; }
-    
-        public virtual ICollection<favourites> favourites { get; set; }
-        public virtual ICollection<journal> journal { get; set; }
-        public virtual role role { get; set; }
     }
 }

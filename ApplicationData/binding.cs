@@ -14,14 +14,7 @@ namespace library.ApplicationData
     
     public partial class binding
     {
-        public binding()
-        {
-            this.books = new HashSet<books>();
-        }
-    
         public int ID_bg { get; set; }
         public string name { get; set; }
-    
-        public virtual ICollection<books> books { get; set; }
     }
 }
